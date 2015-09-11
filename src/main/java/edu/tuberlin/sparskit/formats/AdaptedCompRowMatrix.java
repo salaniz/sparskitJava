@@ -35,8 +35,6 @@ import java.util.*;
 
 import edu.tuberlin.sparskit.Sparskit;
 import edu.tuberlin.sparskit.formats.utils.Utils;
-import edu.tuberlin.sparskit.formats.utils.Utils.CsrDiaJob;
-import edu.tuberlin.sparskit.formats.utils.Utils.CsrEllJob;
 
 /**
  * Compressed row storage (CRS) matrix

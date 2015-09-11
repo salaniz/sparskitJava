@@ -1,7 +1,6 @@
 package edu.tuberlin.sparskit.formats;
 import edu.tuberlin.sparskit.Sparskit;
 import edu.tuberlin.sparskit.formats.utils.Utils;
-import edu.tuberlin.sparskit.formats.utils.Utils.DiaCsrJob;
 import no.uib.cipr.matrix.*;
 
 public class DiagonalMatrix extends AbstractMatrix{
