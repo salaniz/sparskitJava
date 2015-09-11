@@ -3,3 +3,6 @@ target/
 
 # Mac OS files
 .DS_Store
+
+#IPython notebook checkpoints
+.ipynb_checkpoints
