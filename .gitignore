@@ -4,5 +4,10 @@ target/
 # Mac OS files
 .DS_Store
 
-#IPython notebook checkpoints
+# IPython notebook checkpoints
 .ipynb_checkpoints
+
+# Eclipse
+.classpath
+.project
+.settings/
