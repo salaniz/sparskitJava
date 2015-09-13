@@ -2,7 +2,7 @@
 
 This project enables calling Fortran routines from Sparskit in Java.
 It also includes basic Java classes for different matrix formats.
-The /ipynb folder includes a IPython notebook that records and evaluates 
+The /ipynb folder includes a IPython notebook that records and evaluates performance on a set of sample matrices.
 
 ### Run it
 1. Execute the makefile in /jni in order to build the interface to Fortran. The makefile might need to be modified according to the system's paths, compiler and operating system. It currently creates a .dylib (MacOS) and uses gfortran.
