@@ -1,3 +1,4 @@
+#The files can be accessed via http://www.cise.ufl.edu/research/sparse/MM/<FILENAME>.tar.gz where <FILENAME> is replaced by one of the following lines at a time
 HB/1138_bus
 HB/494_bus
 HB/662_bus
