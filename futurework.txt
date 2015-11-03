@@ -1,0 +1,11 @@
+Known Issues:
+- The Ellpack format behaves inconsistent depending on the input data (matrix). Sometimes a Fortran error is raised, sometimes the program terminates without any error. It is not possible to trace it back. Probably a JNI/Fortran Problem.
+- Slicing the input matrices into different sizes can also cause Fortran Problems with the Ellpack format. Related to first issue.
+- The Fortran code seems to have problems with some matrix files. The list in the data directory is a working list.
+
+Open work:
+- Optimize memory usage by intelligently picking array sizes for the various formats. If parts of the initial arrays remain unused after processing it in Fortran, they can be reduced in size. This is relevant for format conversions.
+- Deep analysis of statistical features of matrices and their connection to runtimes in different formats. The statistical features are taken from the fortran code and might need an initial validation first.
+- Reproduce/validate previous research in this area like „SMAT: An Input Adaptive Sparse
+Matrix-Vector Multiplication Auto-Tuner“ (source: http://arxiv.org/pdf/1210.2536v1.pdf)
+- Is it possible to choose the best matrix format (for a given matrix) at runtime and perform better this way? How to do so using heuristics, statistics, etc? 
