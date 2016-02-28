@@ -1,5 +1,6 @@
 package edu.tuberlin.sparskit.formats;
 
+import com.google.common.base.CharMatcher;
 import edu.tuberlin.sparskit.Sparskit;
 import no.uib.cipr.matrix.DenseVector;
 import no.uib.cipr.matrix.Matrix;
@@ -55,10 +56,9 @@ public class FormatsDatasetTests {
     public static List<Object> data() throws IOException {
 
 		// take all files which end in mtx and are in coordinate format
-		List<Object> parameters = Files.walk(Paths.get("data/files"))
+		List<Object> parameters = Files.walk(Paths.get("data/test"))
 			.filter(Files::isRegularFile)
-			.filter(p -> !p.getFileName().toString().endsWith("_b.mtx"))
-			.filter(p -> !p.getFileName().toString().endsWith("_x.mtx"))
+			.filter(p -> CharMatcher.is('_').countIn(p.getFileName().toString()) <= 1)
 			.collect(Collectors.toList());
 
 		return parameters;
