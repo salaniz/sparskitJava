@@ -20,7 +20,7 @@
 			<configuration>
 				<forkMode>once</forkMode>
 				<workingDirectory>target</workingDirectory>
-				<argLine>-Djava.library.path=${basedir}/native/windows</argLine>
+				<argLine>-Djava.library.path=${basedir}/jni</argLine>
 			</configuration>
 		</plugin>
     </plugins>
