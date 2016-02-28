@@ -29,8 +29,8 @@
 					<forkMode>once</forkMode>
 					<argLine>-Djava.library.path=${basedir}/jni</argLine>
 					<!-- See http://sqa.stackexchange.com/questions/9033/how-can-i-use-surefire-to-run-parameterized-tests-in-parallel -->
-					<parallel>classes</parallel>
-					<threadCount>10</threadCount>
+<!--					<parallel>classes</parallel>
+					<threadCount>2</threadCount>-->
 				</configuration>
 			</plugin>
 		</plugins>
