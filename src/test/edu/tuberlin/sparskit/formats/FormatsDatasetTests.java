@@ -64,7 +64,7 @@ public class FormatsDatasetTests {
     public static List<Object> data() throws IOException {
     	
     	List<Object> parameters = new ArrayList<Object>();
-    	Files.walk(Paths.get("data")).forEach(filePath -> {
+    	Files.walk(Paths.get("data/files")).forEach(filePath -> {
 		    if (Files.isRegularFile(filePath)) {
 		    	parameters.add(filePath);
 		    }
@@ -358,7 +358,7 @@ public class FormatsDatasetTests {
 		in.useLocale(Locale.US);
 		
 		String line = "";
-		
+
 		while(in.hasNextLine() && (line = in.nextLine()).startsWith("%")){
 			//skip comment lines
 		}
@@ -424,13 +424,13 @@ public class FormatsDatasetTests {
 		double[] dataArray = new double[data.size()];
 		int[] columnIndexArray = new int[columnIndex.size()];
 		for(int k = 0; k < data.size(); k++) {
-			dataArray[k] = data.get(k).doubleValue();
-			columnIndexArray[k] = columnIndex.get(k).intValue();
+			dataArray[k] = data.get(k);
+			columnIndexArray[k] = columnIndex.get(k);
 		}
 		
 		int[] rowPointerArray = new int[rowPointer.size()];
 		for(int k = 0; k < rowPointer.size(); k++) {
-			rowPointerArray[k] = rowPointer.get(k).intValue();
+			rowPointerArray[k] = rowPointer.get(k);
 		}
 		
 		return new AdaptedCompRowMatrix(numRows, numColumns, dataArray, columnIndexArray, rowPointerArray);
