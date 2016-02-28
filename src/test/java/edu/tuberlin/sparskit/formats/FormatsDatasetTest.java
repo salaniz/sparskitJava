@@ -59,6 +59,8 @@ public class FormatsDatasetTest {
 		List<Object> parameters = Files.walk(Paths.get("./data/files"))
 			.filter(Files::isRegularFile)
 			.filter(p -> CharMatcher.is('_').countIn(p.getFileName().toString()) <= 1)
+			.filter(p -> !p.getFileName().toString().endsWith("_b.mtx"))
+			.filter(p -> !p.getFileName().toString().endsWith("_x.mtx"))
 			.collect(Collectors.toList());
 
 		System.out.printf("Reading %d files from %s\n", parameters.size(), "data/files");
