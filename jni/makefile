@@ -12,10 +12,17 @@ vpath %.class $(CLASS_PATH)$(PCK_PATH)
 
 FC := gfortran
 
-all : libsparskit.so
+# On windows reanme to dll
+# OUTPUTNAME=sparskit.dll
+OUTPUTNAME=libsparskit.so
+
+#PLATFORM_INCLUDE=${JAVA_HOME}/include/win32
+PLATFORM_INCLUDE=${JAVA_HOME}/include/linux
+
+all : ${OUTPUTNAME}
 
 # $@ matches the target, $^ matches all dependancies
-libsparskit.so : SparskitInterface.o SparskitMatVecFortran.o SparskitFormatFortran.o SparskitUnaryFortran.o SparskitBlassmFortran.o SparskitInfofunFortran.o
+${OUTPUTNAME} : SparskitInterface.o SparskitMatVecFortran.o SparskitFormatFortran.o SparskitUnaryFortran.o SparskitBlassmFortran.o SparskitInfofunFortran.o
 	gcc -m64 -shared $^ -o $@ -lgfortran
 
 # $@ matches the target, $< matches the first dependancy
@@ -40,11 +47,11 @@ SparskitInfofunFortran.o : infofun.f
 	
 # $@ matches the target, $< matches the first dependancy
 SparskitInterface.o : SparskitInterface.c edu_tuberlin_sparskit_Sparskit.h
-	gcc -m64 -fPIC -std=c99 -I"/usr/lib/jvm/java-8-oracle/include" -I"/usr/lib/jvm/java-8-oracle/include/linux" -c $< -o $@
+	gcc -m64 -fPIC -std=c99 -I"${JAVA_HOME}/include"  -I"${PLATFORM_INCLUDE}" -c $< -o $@
 
 # $* matches the target filename without the extension
 edu_tuberlin_sparskit_Sparskit.h : Sparskit.class
-	javah -classpath $(CLASS_PATH) $(PCK_NAME)Sparskit
+	${JAVA_HOME}/bin/javah -classpath $(CLASS_PATH) $(PCK_NAME)Sparskit
 
 clean :
-	rm *.o *.h *.so
+	rm -f *.o *.h *.so
