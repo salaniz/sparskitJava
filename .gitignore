@@ -16,3 +16,11 @@ target/
 *.o
 *.h
 *.dylib
+
+# Intellij
+.idea
+*.iml
+
+
+# ignore data files
+data/files
