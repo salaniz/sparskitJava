@@ -56,7 +56,7 @@ public class FormatsDatasetTests {
     public static List<Object> data() throws IOException {
 
 		// take all files which end in mtx and are in coordinate format
-		List<Object> parameters = Files.walk(Paths.get("data/test"))
+		List<Object> parameters = Files.walk(Paths.get("data/files"))
 			.filter(Files::isRegularFile)
 			.filter(p -> CharMatcher.is('_').countIn(p.getFileName().toString()) <= 1)
 			.collect(Collectors.toList());
