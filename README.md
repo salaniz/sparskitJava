@@ -12,7 +12,7 @@ The /ipynb folder includes a IPython notebook that records and evaluates perform
 ## Get the sample Files
 1. execute `download.sh` in the data folder
 
-> Not for running on Windows
+> Note for running on Windows
 
 Get TDM64 http://tdm-gcc.tdragon.net/download
  - install with fortran for your architecture
