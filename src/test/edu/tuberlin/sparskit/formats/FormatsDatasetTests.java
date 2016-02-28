@@ -1,22 +1,12 @@
 package edu.tuberlin.sparskit.formats;
 
+import edu.tuberlin.sparskit.Sparskit;
 import no.uib.cipr.matrix.DenseVector;
 import no.uib.cipr.matrix.Matrix;
-
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExternalResource;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import edu.tuberlin.sparskit.Sparskit;
-import edu.tuberlin.sparskit.formats.AdaptedCompRowMatrix;
-import edu.tuberlin.sparskit.formats.EllpackMatrix;
-import edu.tuberlin.sparskit.formats.JaggedDiagonalMatrix;
-import edu.tuberlin.sparskit.formats.ModifiedCompRowMatrix;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -27,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @RunWith(Parameterized.class)
 public class FormatsDatasetTests {
@@ -62,15 +53,15 @@ public class FormatsDatasetTests {
 
     @Parameterized.Parameters(name = "{index}: Dataset {0}")
     public static List<Object> data() throws IOException {
-    	
-    	List<Object> parameters = new ArrayList<Object>();
-    	Files.walk(Paths.get("data/files")).forEach(filePath -> {
-		    if (Files.isRegularFile(filePath)) {
-		    	parameters.add(filePath);
-		    }
-    	});
 
-        return parameters;
+		// take all files which end in mtx and are in coordinate format
+		List<Object> parameters = Files.walk(Paths.get("data/files"))
+			.filter(Files::isRegularFile)
+			.filter(p -> !p.getFileName().toString().endsWith("_b.mtx"))
+			.filter(p -> !p.getFileName().toString().endsWith("_x.mtx"))
+			.collect(Collectors.toList());
+
+		return parameters;
     }
 
     @BeforeClass
