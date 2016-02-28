@@ -837,7 +837,7 @@ JNIEXPORT void JNICALL Java_edu_tuberlin_sparskit_Sparskit_distaij(JNIEnv *env, 
 	(*env)->ReleasePrimitiveArrayCritical(env, std, c_std, 0);
 }
 
-JNIEXPORT int JNICALL Java_edu_tuberlin_sparskit_Sparskit_skyline(JNIEnv *env, jobject thisObj, jint n, jint sym, jintArray ja, jintArray ia, jintArray jao, jintArray iao) {
+JNIEXPORT jint JNICALL Java_edu_tuberlin_sparskit_Sparskit_skyline(JNIEnv *env, jobject thisObj, jint n, jint sym, jintArray ja, jintArray ia, jintArray jao, jintArray iao) {
 	jint *c_ja = (*env)->GetPrimitiveArrayCritical(env, ja, NULL);
 	jint *c_ia = (*env)->GetPrimitiveArrayCritical(env, ia, NULL);
 	jint *c_jao = (*env)->GetPrimitiveArrayCritical(env, jao, NULL);
@@ -867,7 +867,7 @@ JNIEXPORT void JNICALL Java_edu_tuberlin_sparskit_Sparskit_distdiag(JNIEnv *env,
 	(*env)->ReleasePrimitiveArrayCritical(env, dist, c_dist, 0);
 }
 
-JNIEXPORT int JNICALL Java_edu_tuberlin_sparskit_Sparskit_bandpart(JNIEnv *env, jobject thisObj, jint n, jintArray ja, jintArray ia, jintArray dist, jint nper) {
+JNIEXPORT jint JNICALL Java_edu_tuberlin_sparskit_Sparskit_bandpart(JNIEnv *env, jobject thisObj, jint n, jintArray ja, jintArray ia, jintArray dist, jint nper) {
 	jint *c_ja = (*env)->GetPrimitiveArrayCritical(env, ja, NULL);
 	jint *c_ia = (*env)->GetPrimitiveArrayCritical(env, ia, NULL);
 	jint *c_dist = (*env)->GetPrimitiveArrayCritical(env, dist, NULL);
@@ -883,7 +883,7 @@ JNIEXPORT int JNICALL Java_edu_tuberlin_sparskit_Sparskit_bandpart(JNIEnv *env, 
 	return band;
 }
 
-JNIEXPORT int JNICALL Java_edu_tuberlin_sparskit_Sparskit_nimpdiag(JNIEnv *env, jobject thisObj, jint n, jint nnz, jintArray dist, jint ipar1, jintArray ioff, jdoubleArray dcount) {
+JNIEXPORT jint JNICALL Java_edu_tuberlin_sparskit_Sparskit_nimpdiag(JNIEnv *env, jobject thisObj, jint n, jint nnz, jintArray dist, jint ipar1, jintArray ioff, jdoubleArray dcount) {
 	jint *c_dist = (*env)->GetPrimitiveArrayCritical(env, dist, NULL);
 	jint *c_ioff = (*env)->GetPrimitiveArrayCritical(env, ioff, NULL);
 	jdouble *c_dcount = (*env)->GetPrimitiveArrayCritical(env, dcount, NULL);
